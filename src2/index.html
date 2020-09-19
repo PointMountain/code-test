@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="./heat.js"></script>
+  <style>
+    *{margin:0;padding:0;}
+    #app{width:800px;height:800px;border:1px solid #333;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <img id="img" alt="">
+  </div>
+  <br/><p><a href="https://www.patrick-wied.at/static/heatmapjs/docs.html#heatmap-addData">文档地址： https://www.patrick-wied.at/static/heatmapjs/docs.html#heatmap-addData</a></p><br/><br/>
+
+  <script>
+    let dataPoints = []
+    const app = document.getElementById('app')
+    let heatmapInstance = h337.create({
+      container: document.getElementById('app'),
+      radius: 40,
+      maxOpacity: .7,
+      minOpacity: 0,
+      blur: .75
+    })
+    app.addEventListener('click', function(e) {
+      const dataPoint = {
+        x: e.x,
+        y: e.y,
+        value: 10
+      }
+      dataPoints.push(dataPoint)
+      heatmapInstance.addData(dataPoints)
+      console.log(dataPoints)
+      heatmapInstance.setData({
+        min: 0,
+        max: 100,
+        data: dataPoints
+      })
+    })
+  </script>
+</body>
+</html>

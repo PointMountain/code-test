@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/live2d/css/live2d.css" />
+  <title>😏</title>
+  <style>
+    .fixed-div{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      border: 2px solid red;
+      line-height: 50px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body style="height: 50000px;">
+  <div class="title fixed-div"><a>页面的标题</a></div>
+  <div style="width: 30px; height: 30px;">
+    我是一个很长很长很长的一句话我是一个很长很长很长的一句话
+  </div>
+  <div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+  </div>
+</body>
+<script type="text/javascript">
+  var message_Path = '/src/live2d/'
+  var home_Path = 'http://localhost:8080/'  //此处修改为你的域名，必须带斜杠
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+<script type="text/javascript" src="src/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="src/live2d/js/message.js"></script>
+<script type="text/javascript">
+  loadlive2d("live2d", "src/live2d/model/tia/model.json");
+</script>
+</html>
