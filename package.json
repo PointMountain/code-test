@@ -17,6 +17,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "html-webpack-plugin": "^4.4.1"
+    "html-webpack-plugin": "^4.4.1",
+    "redis": "^3.0.2"
   }
 }
