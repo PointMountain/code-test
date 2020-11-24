@@ -99,26 +99,107 @@
       step-end是每一关键帧在动画进度的末尾改变属性状态 即到达条件瞬间变化
       linear是每一关键帧在动画执行期间以播放时间均匀插值的方式改变属性状态 即缓慢变化直到满足条件变化结束
      */
-    .pie::before{
+    .pie::before {
       content: '';
       position: absolute;
       border: solid 75px;
       border-color: #37c #37c transparent transparent;
       transform: translate(-50%, -50%) rotate(0turn);
       animation: spine 10s linear infinite,
-                convex 10s step-end infinite;
+        convex 10s step-end infinite;
       animation-play-state: paused;
       animation-delay: inherit;
     }
 
-    @keyframes spine{
+    .pie span {
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @keyframes spine {
       to {
         transform: translate(-50%, -50%) rotate(1turn);
       }
     }
-    @keyframes convex{
+
+    @keyframes convex {
       50% {
         border-color: transparent transparent #3c7 #3c7
+      }
+    }
+
+
+    .pie2,
+    .pie2::before {
+      position: relative;
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    .pie2 {
+      color: #fff;
+      font-size: 1rem;
+      line-height: 150px;
+      text-align: center;
+      /*
+        90deg = .25turn
+        10% = .25turn + .1turn
+      */
+      background: linear-gradient(.35turn, transparent 50%, #37c 50%);
+    }
+    .pie2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(90deg, #37c 50%, #3c7 50%);
+      z-index: -1;
+    }
+    .pie2.convex {
+      background: linear-gradient(.85turn, #3c7 50%, transparent 50%);
+    }
+
+    .pie3,
+    .pie3::before {
+      display: inline-block;
+      position: relative;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+
+    .pie3{
+      color: #fff;
+      font-size: 1rem;
+      line-height: 150px;
+      text-align: center;
+      background: linear-gradient(.25turn, #3c7 50%, transparent 50%);
+      animation: convex2 10s step-end infinite;
+      animation-play-state: paused;
+      animation-delay: -0s;
+    }
+    .pie3::before{
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, #37c 50%, #3c7 50%);
+      transform: rotate(0turn);
+      animation: spine2 10s linear infinite;
+      animation-play-state: paused;
+      animation-delay: inherit;
+    }
+    @keyframes spine2 {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+    @keyframes convex2 {
+      50% {
+        background: linear-gradient(90deg, transparent 50%, #37c 50%);
       }
     }
   </style>
@@ -132,11 +213,18 @@
   <!-- <div class="pie"></div>
   <div class="pie covex"></div> -->
 
-  <div class="pie" style="animation-delay: -1s;"></div>
-  <div class="pie" style="animation-delay: -2.5s;"></div>
-  <div class="pie" style="animation-delay: -6s;"></div>
-  <div class="pie" style="animation-delay: -7.5s;"></div>
+  <div class="pie" style="animation-delay: -1s;"><span>10%</span></div>
+  <div class="pie" style="animation-delay: -2.5s;"><span>25%</span></div>
+  <div class="pie" style="animation-delay: -6s;"><span>60%</span></div>
+  <div class="pie" style="animation-delay: -7.5s;"><span>75%</span></div>
 
+  <div class="pie2">10%</div>
+  <div class="pie2 convex">60%</div>
+
+  <div class="pie3" style="animation-delay: -1s;"><span>10%</span></div>
+  <div class="pie3" style="animation-delay: -2.5s;"><span>25%</span></div>
+  <div class="pie3" style="animation-delay: -6s;"><span>60%</span></div>
+  <div class="pie3" style="animation-delay: -7.5s;"><span>75%</span></div>
 </body>
 
 </html>
